@@ -1,0 +1,72 @@
+<!-- component template -->
+<template>
+  <div class="page">
+    <div class="navbar no-shadow">
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a class="link back" data-force="true" data-ignore-cache="true">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title" style="font-size: 15px;">
+        Melakukan Pelaporan
+      </div>
+    </div>
+  </div>
+    <div class="page-content">
+      <div><input type="hidden" name="" id="cordinate"></div>
+      <div id="loading"></div>
+      <div id="div2"></div>
+    </div>
+  </div>
+</template>
+<!-- component styles -->
+<style>
+  .red-link {
+    color: red;
+  }
+</style>
+<!-- rest of component data and methods -->
+
+<script>
+
+  // script must return component object 
+  
+  return {
+
+    on: {
+      pageInit: function () {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+      }
+      function showPosition(position) {
+      document.getElementById("cordinate").value = position.coords.longitude +","+ position.coords.latitude;
+      }
+        $(document).ready(function(){
+          setTimeout(function() {
+          var kasus = $("#kasus").val().replace(/\s/g,"%20");
+          var nama = $("#nama").val().replace(/\s/g,"%20");
+          var telepon = $("#telp").val();
+          var pesan = $("#pesan").val().replace(/\s/g,"%20");
+          var cordinate = $("#cordinate").val();
+          console.log(kasus);
+          console.log(nama);
+          console.log(telepon);
+          console.log(pesan);
+          $("#div2").load("http://localhost/AndiWira/request?kasus="+kasus+"&nama="+nama+"&telepon="+telepon+"&pesan="+pesan+"&cordinate="+cordinate+"");
+          },5000);
+          });
+          
+      },
+
+      pageAfterOut: function () {
+        // page has left the vie
+        
+  }}
+
+
+
+}
+</script>
