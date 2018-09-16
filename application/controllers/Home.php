@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('connect');
 		$this->load->library('cart');
+		$this->load->helper('fungsi');
 	}
 
 	public function index()
