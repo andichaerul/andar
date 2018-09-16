@@ -21,7 +21,7 @@ div#loading {
     width: 100%;
     text-align: center;
 }
-button#lapor {
+button#cek-berita {
     position: fixed !important;
     bottom: 35px;
     left: 5%;

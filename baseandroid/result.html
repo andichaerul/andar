@@ -10,13 +10,11 @@
         </a>
       </div>
       <div class="title" style="font-size: 15px;">
-        Melakukan Pelaporan
+        Pengecekan Berita
       </div>
     </div>
   </div>
     <div class="page-content">
-      <div><input type="hidden" name="" id="cordinate"></div>
-      <div id="loading"></div>
       <div id="div2"></div>
     </div>
   </div>
@@ -37,36 +35,26 @@
 
     on: {
       pageInit: function () {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-      } else { 
-      }
-      function showPosition(position) {
-      document.getElementById("cordinate").value = position.coords.longitude +","+ position.coords.latitude;
-      }
-        $(document).ready(function(){
-          setTimeout(function() {
-          var kasus = $("#kasus").val().replace(/\s/g,"%20");
-          var nama = $("#nama").val().replace(/\s/g,"%20");
-          var telepon = $("#telp").val();
-          var pesan = $("#pesan").val().replace(/\s/g,"%20");
-          var cordinate = $("#cordinate").val();
-          console.log(kasus);
-          console.log(nama);
-          console.log(telepon);
-          console.log(pesan);
-          $("#div2").load("http://localhost/AndiWira/request?kasus="+kasus+"&nama="+nama+"&telepon="+telepon+"&pesan="+pesan+"&cordinate="+cordinate+"");
-          },5000);
-          });
+        var url= document.getElementById("url").value;
+        $.getJSON("http://localhost/andar/home/proses",{url:url} ,function(result)
+        {
+          // alert("Notification received:\n" + JSON.stringify(result));
+          var json = JSON.stringify(result)
+          var obj = JSON.parse(json);
+          if (obj.nama_media.length < 1) {
+          document.getElementById("div2").innerHTML = "Sumber tidak terdaftar di dewan pers";
+          }
+          else{
+          document.getElementById("div2").innerHTML = "Sumber :" + obj.nama_media;
+          }
+        });
           
       },
 
       pageAfterOut: function () {
         // page has left the vie
+        }
         
   }}
 
-
-
-}
 </script>

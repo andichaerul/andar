@@ -77,37 +77,16 @@ var calendarDefault = app.calendar.create({
     closeOnSelect:'true',
 });
 
-// $("#splash-screen").delay(3000).fadeOut();
-// app.preloader.show(); 
-    // if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(showPosition);
-    // } else { 
-    // }
-    // function showPosition(position) {
-    // document.getElementById("mylocation").value = position.coords.longitude +","+ position.coords.latitude;
-    // }
-    // $(document).ready(function(){
-    //     var delay = 1000;
-    //     setTimeout(function() {
-    //       var mylocation = $("#mylocation").val();
-    //       var reportlocation = $("#reportlocation").val();
-    //       console.log(mylocation);
-    //       $("#div1").load("https://birautama.com/genetika/wira/AndiWira/?dari="+mylocation+"&tujuan="+reportlocation+"");
-    //       }, 2000);
-    // app.preloader.hide();    
-    // });  
-          
-
  
 var toastBottom = app.toast.create({
-  text: 'Kasus anda belum ditentukan',
+  text: 'Anda belum memasukkan URL Berita',
   closeTimeout: 2000,
 });
 
-$$('#lapor').on('click', function(){
-  var kasus= document.getElementById("kasus").value;   
+$$('#cek-berita').on('click', function(){
+  var url= document.getElementById("url").value;   
     
-  if (kasus==null || kasus=="")
+  if (url==null || url=="")
         {
             toastBottom.open();
             return false;

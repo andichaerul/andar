@@ -47,7 +47,7 @@
   <div class="page">
       <div class="navbar no-shadow">
           <div class="navbar-inner">
-               <div class="title">Aplikasi Pelapor</div>
+               <div class="title" style="font-size: 15px">Aplikasi Cek Berita Hoax</div>
                <div class="right">
                 <a href="#" class="link icon-only popup-open" data-popup=".my-popup">
                   <i class="f7-icons">settings</i>
@@ -102,41 +102,23 @@
     </div>
               </div>
             </div>
-        </div>    
-        <div class="list">
-        <!-- Load dom map -->
-        <ul>
-        <li>
-         <a class="item-link smart-select smart-select-init">
-            <select name="kasus" id="kasus">
-              <option value="" selected>-</option>
-              <option value="Kecelakaan lalu lintas">Kecelakaan lalu lintas</option>
-              <option value="Kebakaran">Kebakaran</option>
-              <option value="Penemuan Mayat">Penemuan Mayat</option>
-              <option value="KDRT (Kekerasan dalam rumah tangga)">Kekerasan dalam rumah tangga</option>
-              <option value="Kasus Pembunuhan">Pembunuhan</option>
-              <option value="Terjadi perkelahian">Perkelahian</option>
-            </select>
-          <div class="item-content">
-            <div class="item-inner">
-              <div class="item-title">Kategori</div>
+        </div> 
+        <!-- Here IS FORM    -->
+    <div class="list">
+      <ul>
+        <li class="item-content item-input">
+          <div class="item-inner">
+            <!-- "item-floating-label" class on item title -->
+            <div class="item-title item-floating-label">Masukkan URL</div>
+            <div class="item-input-wrap">
+              <input type="text" name="url" id="url">
+              <span class="input-clear-button"></span>
             </div>
-        </div>
-      </a>
-      </li>
-      <li class="item-content item-input">
-            <div class="item-inner">
-              <!-- "item-floating-label" class on item title -->
-              <div class="item-title item-floating-label">Pesan untuk petugas</div>
-              <div class="item-input-wrap">
-                <textarea id="pesan"></textarea>
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
+          </div>
+        </li>
       </ul>
     </div>
-    <button class="col button button-fill button-round" id="lapor">Lapor Ke Petugas</button>
+    <button class="col button button-fill button-round" id="cek-berita">Lapor Ke Petugas</button>
       </div>
       </div>
   </div>

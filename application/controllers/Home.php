@@ -12,11 +12,13 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+
 		$this->load->view('index');
 	}
 	public function proses()
 	{
-		$this->load->view('proses');
+		$data['sumber'] = $this->connect->cek_sumber();
+		$this->load->view('proses',$data);
 	}
 
 }
