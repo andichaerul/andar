@@ -20,5 +20,9 @@ class Home extends CI_Controller {
 		$data['sumber'] = $this->connect->cek_sumber();
 		$this->load->view('proses',$data);
 	}
+	public function word()
+	{
+		$this->load->view('word');
+	}
 
 }

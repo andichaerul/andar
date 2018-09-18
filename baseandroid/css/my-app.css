@@ -1,14 +1,5 @@
-button#ceklokasi {
-    position: fixed !important;
-    bottom: 35px;
-    left: 5%;
-    width: 90%;
-}
-button#carirute {
-    position: fixed !important;
-    bottom: 35px;
-    left: 5%;
-    width: 90%;
+.row.no-gap {
+    margin-bottom: 12px;
 }
 .row {
     margin-bottom: 20px;

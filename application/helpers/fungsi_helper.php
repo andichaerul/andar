@@ -40,3 +40,13 @@ if ( ! function_exists('source'))
 			return $data;
 		}
 }
+
+if ( ! function_exists('getTitle'))
+{
+	function getTitle($url) 
+	{
+    $page = file_get_contents($url);
+    $title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;
+    return $title;
+	}
+}

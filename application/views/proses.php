@@ -19,8 +19,23 @@ else {
 		$data[] = $data_sumber[$x]; 
 	}
 }
+if (count($data_sumber) == null) {
+	echo "{\"nama_media\":\"\"}";
+}
+else {
+	echo "
+	{		
+	\"nama_media\":\"".$data['0']."\",
+	\"type_media\":\"".$data['1']."\",
+	\"terbit\":\"".$data['2']."\",
+	\"website\":\"".$data['3']."\",
+	\"area\":\"".$data['4']."\",
+	\"alamat\":\"".$data['5']."\",
+	\"telp\":\"".$data['6']."\",
+	\"status\":\"".$data['7']."\",
+	\"update\":\"".$data['8']."\"
+	}
+	";	
+}
 
 ?>
-{
-	"nama_media":"<?php echo "".$data['0']."" ?>"
-}
