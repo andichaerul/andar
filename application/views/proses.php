@@ -20,6 +20,8 @@ echo "
           <!-- Each 'cell' has col-[width in percents] class -->
               <div class='col-100'>Sumber tidak terdaftar di Dewan Pers</div>
           </div>
+</div>
+      </div>          
 	";
 }
 else {
@@ -94,6 +96,8 @@ echo "
               <div class='col-50' style='font-size: 16px ; font-weight: bold;'>Persentase</div>
           </div>
 ";
+$kata[] = "Null";
+$rate[] = "Null";
 for ($x=0; $x < count($kata) ; $x++) { 
 echo "
 <div class='row no-gap'>
