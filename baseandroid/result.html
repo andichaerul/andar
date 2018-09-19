@@ -15,111 +15,17 @@
     </div>
   </div>
     <div class="page-content">
-      <div class="card card-outline">
-        <div class="card-header" style="font-weight: bold">Tentang Sumber</div>
-        <div class="card-content card-content-padding">
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Nama Media</div>
-              <div class="col-50">Rakyat Aceh</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Type Media</div>
-              <div class="col-50">Cetak</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Penerbitan</div>
-              <div class="col-50">Harian</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Website</div>
-              <div class="col-50">www.rakyataceh.com</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Area</div>
-              <div class="col-50">Aceh</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Alamat</div>
-              <div class="col-50">Jl. Sultan Malikussaleh No. 109, Lhong Raya, Banda Aceh 23238</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Telepon</div>
-              <div class="col-50">(0651) 35478</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Status</div>
-              <div class="col-50" style="color: #129217; font-weight: bold">Terverifikasi Faktual dan Administrasi</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Update</div>
-              <div class="col-50">2018-02-01</div>
-          </div>
-        </div>
-      </div>
-      <div class="card card-outline">
-        <div class="card-header" style="font-weight: bold">Judul Berita</div>
-        <div class="card-content card-content-padding">
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50" style="font-size: 16px ; font-weight: bold;">Kata</div>
-              <div class="col-50" style="font-size: 16px ; font-weight: bold;">Persentase</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Viralkan</div>
-              <div class="col-50">20%</div>
-          </div>
-          <div class="row no-gap">
-          <!-- Each "cell" has col-[width in percents] class -->
-              <div class="col-50">Jokowi Lalai</div>
-              <div class="col-50">15%</div>
-          </div>
-        </div>
-        <div class="card-footer">
-          Persentase Hoax 35%
-        </div>
-      </div>
-      <div class="card card-outline">
-        <div class="card-header" style="font-weight: bold">Persentase</div>
-        <div class="card-content card-content-padding">
-            <div class="block block-strong">
-              <div class="row">
-                <div class="col text-align-center">
-                  <div
-                    class="gauge gauge-init"
-                    data-type="semicircle"
-                    data-value="0.3"
-                    data-value-text="30%"
-                    data-label-text="Judul Hoax"
-                    data-value-text-color="#f44336"
-                    data-border-color="#f44336"
-                  ></div>
-                </div>
-                <div class="col text-align-center">
-                  <div
-                    class="gauge gauge-init"
-                    data-type="semicircle"
-                    data-value="0.3"
-                    data-value-text="30%"
-                    data-value-text-color="#e91e63"
-                    data-border-color="#e91e63"
-                    data-label-text="Sumber Hoax"
-                    data-label-text-color="#333"
-                  ></div>
-                </div>
-              </div>
-            </div>
+      <div id="load"></div>
+      <div class='card card-outline'>
+        <div class='card-header' style='font-weight: bold'>Persentase</div>
+        <div class='card-content card-content-padding'>
+          <div class="block block-strong text-align-center">
+            <div class='gauge demo-gauge'></div>
+          </div>  
       </div>
     </div>
+    </div>
+      
   </div>
 </template>
 <!-- component styles -->
@@ -138,11 +44,30 @@
 
     on: {
       pageInit: function () {
-        // var url= document.getElementById("url").value;
-        // $(document).ready(function(){
-        // $("#div2").load("http://localhost/andar/home/proses?url="+url+"");
-        // $("#referensi").load("https://www.google.co.id/search?safe=strict&rlz=1C1NDCM_enID786ID786&biw=360&bih=640&tbm=nws&ei=kx-hW-TaHofXvgT8u56YDg&q=cpns+2018&btnG= #gsr");
-        //  });
+      var demoGauge = app.gauge.create({
+      el: '.demo-gauge',
+      type: 'circle',
+      value: 0 / 100,
+      size: 250,
+      borderColor: '#2196f3',
+      borderWidth: 10,
+      valueText: '0%',
+      valueFontSize: 41,
+      valueTextColor: '#2196f3',
+      labelText: 'Loading...',
+      }); 
+         var url= document.getElementById("url").value;
+         $(document).ready(function(){
+         $("#load").load("http://localhost/andar/home/proses?url="+url+"");
+         setTimeout(function(){
+         var persen= document.getElementById("persen").value; 
+         demoGauge.update({
+         value: persen / 100,
+         valueText: persen + '%',
+         labelText: 'Persentase Hoax'
+        }) 
+         }, 5000);
+        });
 
       },
 

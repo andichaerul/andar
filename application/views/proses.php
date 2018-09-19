@@ -1,41 +1,115 @@
 <?php
-$data_sumber = array();
+$data_sumber[] = array();
 foreach ($sumber as $row) {
-	$data_sumber[] = $row->Nama_Media;
-	$data_sumber[] = $row->Type;
-	$data_sumber[] = $row->Terbit;
-	$data_sumber[] = $row->Website;
-	$data_sumber[] = $row->Area;
-	$data_sumber[] = $row->Alamat;
-	$data_sumber[] = $row->Telp;
-	$data_sumber[] = $row->Status;
-	$data_sumber[] = $row->Update;
+	$data_sumber['1'] = $row->Nama_Media;
+	$data_sumber['2'] = $row->Type;
+	$data_sumber['3'] = $row->Terbit;
+	$data_sumber['4'] = $row->Website;
+	$data_sumber['5'] = $row->Area;
+	$data_sumber['6'] = $row->Alamat;
+	$data_sumber['7'] = $row->Telp;
+	$data_sumber['8'] = $row->Status;
+	$data_sumber['9'] = $row->Update;
 }
-if (count($data_sumber) == null ) {
-	$data['0'] = null;
+if (count($data_sumber) == 1) {
+echo "
+<div class='card card-outline'>
+        <div class='card-header' style='font-weight: bold'>Tentang Sumber</div>
+        <div class='card-content card-content-padding'>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-100'>Sumber tidak terdaftar di Dewan Pers</div>
+          </div>
+	";
 }
 else {
-	for ($x=0; $x < count($data_sumber) ; $x++) { 
-		$data[] = $data_sumber[$x]; 
+echo "
+<div class='card card-outline'>
+        <div class='card-header' style='font-weight: bold'>Tentang Sumber</div>
+        <div class='card-content card-content-padding'>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Nama Media</div>
+              <div class='col-50'>".$data_sumber['1']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Type Media</div>
+              <div class='col-50'>".$data_sumber['2']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Penerbitan</div>
+              <div class='col-50'>".$data_sumber['3']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Website</div>
+              <div class='col-50'>".$data_sumber['4']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Area</div>
+              <div class='col-50'>".$data_sumber['5']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Alamat</div>
+              <div class='col-50'>".$data_sumber['6']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Telepon</div>
+              <div class='col-50'>".$data_sumber['7']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Status</div>
+              <div class='col-50' style='color: #129217; font-weight: bold'>".$data_sumber['8']."</div>
+          </div>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>Update</div>
+              <div class='col-50'>".$data_sumber['9']."</div>
+          </div>
+        </div>
+      </div>
+";
+}
+$space = " ";
+$judul = getTitle($_GET['url']).$space.getTitle($_GET['url']);
+foreach ($word as $row) {
+	if ( strripos ($judul, $row->word_name) > 0) {
+		$kata[] = $row->word_name;
+		$rate[] = $row->rating;
 	}
 }
-if (count($data_sumber) == null) {
-	echo "{\"nama_media\":\"\"}";
+echo "
+<div class='card card-outline'>
+        <div class='card-header' style='font-weight: bold'>Isi Content Berita</div>
+        <div class='card-content card-content-padding'>
+          <div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50' style='font-size: 16px ; font-weight: bold;'>Kata</div>
+              <div class='col-50' style='font-size: 16px ; font-weight: bold;'>Persentase</div>
+          </div>
+";
+for ($x=0; $x < count($kata) ; $x++) { 
+echo "
+<div class='row no-gap'>
+          <!-- Each 'cell' has col-[width in percents] class -->
+              <div class='col-50'>".$kata[$x]."</div>
+              <div class='col-50'>".$rate[$x]." %</div>
+          </div>
+	";
 }
-else {
-	echo "
-	{		
-	\"nama_media\":\"".$data['0']."\",
-	\"type_media\":\"".$data['1']."\",
-	\"terbit\":\"".$data['2']."\",
-	\"website\":\"".$data['3']."\",
-	\"area\":\"".$data['4']."\",
-	\"alamat\":\"".$data['5']."\",
-	\"telp\":\"".$data['6']."\",
-	\"status\":\"".$data['7']."\",
-	\"update\":\"".$data['8']."\"
-	}
-	";	
-}
-
+echo "
+</div>
+        <div class='card-footer'>
+          Persentase Hoax ".array_sum($rate)." %
+        </div>
+      </div>
+";
+echo "<input id='persen' type='hidden' value='".array_sum($rate)."'>";
 ?>
+

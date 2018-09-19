@@ -1,8 +1,8 @@
 <?php 
  
 class Connect extends CI_Model{
-	function found_point(){
-		$data = $this->db->query("SELECT * from point");
+	function word(){
+		$data = $this->db->query("SELECT * from word");
 		return $data->result();
 	}
 	function cek_sumber(){

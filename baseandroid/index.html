@@ -46,7 +46,7 @@
                <div class="title" style="font-size: 15px">Aplikasi Cek Berita Hoax</div>
                <div class="right">
                 <a href="#" class="link icon-only popup-open" data-popup=".my-popup">
-                  <i class="f7-icons">settings</i>
+                  <i class="f7-icons">drawers</i>
                 </a>
               </div>
           </div>  
@@ -107,14 +107,15 @@
             <!-- "item-floating-label" class on item title -->
             <div class="item-title item-floating-label">Masukkan URL</div>
             <div class="item-input-wrap">
-              <input type="text" name="url" id="url">
+              <input name="url" id="url" type="url" data-error-message="URL Salah, Contoh http://contoh.com" required validate >
               <span class="input-clear-button"></span>
+              <div class="item-input-info"></div>
             </div>
           </div>
         </li>
       </ul>
     </div>
-    <button class="col button button-fill button-round" id="cek-berita">Lapor Ke Petugas</button>
+    <button class="col button button-fill button-round" id="cek-berita">Lakukan pengecekan</button>
       </div>
       </div>
   </div>
