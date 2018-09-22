@@ -1,8 +1,12 @@
 var app = new Framework7({
+  touch: {
+    disableContextMenu: false,
+  },
   // App root element
   root: '#app',
   // App Name
   name: 'My App',
+  
   // App id
   id: 'com.myapp.test',
   // Enable swipe panel
@@ -33,8 +37,8 @@ var app = new Framework7({
       componentUrl: './result.html',
     },
     {
-      path: '/cek-lokasi/',
-      componentUrl: './cek-lokasi.html',
+      path: '/sendlapor/',
+      componentUrl: './sendlapor.html',
     },
     
     {
@@ -82,17 +86,64 @@ var toastBottom = app.toast.create({
   text: 'Anda belum memasukkan URL Berita',
   closeTimeout: 2000,
 });
+var namapelaporvalidasi = app.toast.create({
+  text: 'Harap isi nama lengkap anda',
+  closeTimeout: 2000,
+});
+var emailpelaporvalidasi = app.toast.create({
+  text: 'Harap isi Email anda',
+  closeTimeout: 2000,
+});
+var urlpelaporvalidasi = app.toast.create({
+  text: 'Harap isi URL berita yang anda ingin masukkan',
+  closeTimeout: 2000,
+});
+var komentarpelaporvalidasi = app.toast.create({
+  text: 'Harap isi pesan mengenai berita yg anda ingin laporkan',
+  closeTimeout: 2000,
+});
 
 $$('#cek-berita').on('click', function(){
   var url= document.getElementById("url").value;   
     
-  if (url==null || url=="")
+  if (url==null || url=="" )
         {
             toastBottom.open();
             return false;
         }    
   else{
      mainView.router.navigate('/result/');
+  }                      
+});
+$$('#kirim-laporan').on('click', function(){
+  var namapelapor= document.getElementById("namapelapor").value;   
+  var emailpelapor= document.getElementById("emailpelapor").value;
+  var urlpelapor= document.getElementById("urlpelapor").value;   
+  var komentarpelapor= document.getElementById("komentarpelapor").value;   
+    
+  if (namapelapor==null || namapelapor=="" )
+        {
+            namapelaporvalidasi.open();
+            return false;
+        }
+  if (emailpelapor==null || emailpelapor=="" )
+        {
+            emailpelaporvalidasi.open();
+            return false;
+        } 
+  if (urlpelapor==null || urlpelapor=="" )
+        {
+            urlpelaporvalidasi.open();
+            return false;
+        }
+  if (komentarpelapor==null || komentarpelapor=="" )
+        {
+            komentarpelaporvalidasi.open();
+            return false;
+        }                           
+  else{
+     mainView.router.navigate('/sendlapor/');
+     app.popup.close('.my-popup');
   }                      
 });
 

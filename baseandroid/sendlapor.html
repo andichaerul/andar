@@ -1,0 +1,54 @@
+<!-- component template -->
+<template>
+  <div class="page">
+    <div class="navbar no-shadow">
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a class="link back" data-force="true" data-ignore-cache="true">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title" style="font-size: 15px;">
+        Laporan dikirim
+      </div>
+    </div>
+  </div>
+    <div class="page-content">
+        <div id="send"></div>
+      </div>
+    </div>
+</template>
+<!-- component styles -->
+<style>
+  .red-link {
+    color: red;
+  }
+</style>
+<!-- rest of component data and methods -->
+
+<script>
+  // script must return component object 
+ 
+  return {
+
+    on: {
+      pageInit: function () {
+        var namapelapor = encodeURIComponent(document.getElementById("namapelapor").value);   
+        var emailpelapor = document.getElementById("emailpelapor").value;
+        var urlpelapor = document.getElementById("urlpelapor").value;   
+        var komentarpelapor = document.getElementById("komentarpelapor").value;   
+        $(document).ready(function(){
+        $("#send").load("http://localhost/andar/home/report?nama="+namapelapor+"&email="+emailpelapor+"&url="+urlpelapor+"&comment="+komentarpelapor+"");
+        });
+      },
+
+      pageAfterOut: function () {
+        // page has left the vie
+        
+  }}
+
+
+
+}
+</script>

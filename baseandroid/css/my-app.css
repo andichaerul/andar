@@ -17,4 +17,11 @@ button#cek-berita {
     bottom: 35px;
     left: 5%;
     width: 90%;
+    z-index: 1;
+}
+button#kirim-laporan {
+    position: fixed !important;
+    bottom: 35px;
+    left: 5%;
+    width: 90%;
 }

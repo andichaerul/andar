@@ -11,7 +11,13 @@ foreach ($sumber as $row) {
 	$data_sumber['8'] = $row->Status;
 	$data_sumber['9'] = $row->Update;
 }
+$data_report = array();
+foreach ($report as $row) {
+	$data_report[] = $row->Comment;
+}
+
 if (count($data_sumber) == 1) {
+$rate['tambah'] = "20";	
 echo "
 <div class='card card-outline'>
         <div class='card-header' style='font-weight: bold'>Tentang Sumber</div>
@@ -25,6 +31,7 @@ echo "
 	";
 }
 else {
+$data_sumber['10'] = "100";	
 echo "
 <div class='card card-outline'>
         <div class='card-header' style='font-weight: bold'>Tentang Sumber</div>
@@ -88,7 +95,7 @@ foreach ($word as $row) {
 }
 echo "
 <div class='card card-outline'>
-        <div class='card-header' style='font-weight: bold'>Isi Content Berita</div>
+        <div class='card-header' style='font-weight: bold'>Content yg terindikasi Hoax</div>
         <div class='card-content card-content-padding'>
           <div class='row no-gap'>
           <!-- Each 'cell' has col-[width in percents] class -->
@@ -96,8 +103,8 @@ echo "
               <div class='col-50' style='font-size: 16px ; font-weight: bold;'>Persentase</div>
           </div>
 ";
-$kata[] = "Null";
-$rate[] = "Null";
+$kata[] = "null";
+$rate[] = "0";
 for ($x=0; $x < count($kata) ; $x++) { 
 echo "
 <div class='row no-gap'>
@@ -110,10 +117,16 @@ echo "
 echo "
 </div>
         <div class='card-footer'>
-          Persentase Hoax ".array_sum($rate)." %
+          Persentase Konten ".array_sum($rate)." %
         </div>
       </div>
 ";
-echo "<input id='persen' type='hidden' value='".array_sum($rate)."'>";
+if (count($data_report) == 1) {
+	echo "<input id='persen' type='hidden' value='100'>";
+}
+else {
+	echo "<input id='persen' type='hidden' value='".array_sum($rate)."'>";
+}
+
 ?>
 

@@ -56,28 +56,25 @@
         <div class="popup my-popup">
             <div class="view">
               <div class="page">
-                <div class="navbar">
+                <div class="navbar no-shadow">
                   <div class="navbar-inner">
-                    <div class="title">Biodata</div>
+                    <div class="title" style="font-size: 15px">Form Laporan Berita Hoax</div>
                     <div class="right">
                       <!-- Link to close popup -->
                       <a class="link popup-close"><i class="f7-icons">close</i></a>
                     </div>
                   </div>
                 </div>
-                <div class="page-content">
-      <div class="block">
-            Tekan tombol Back jika selesai mengisi data
-      </div>
+    <div class="page-content">
       <div class="list">
-        <form class="form-store-data" id="my-form">
+        
         <ul>
           <li class="item-content item-input">
             <div class="item-inner">
               <!-- "item-floating-label" class on item title -->
               <div class="item-title item-floating-label">Nama Lengkap</div>
               <div class="item-input-wrap">
-                <input type="text" name="nama" id="nama">
+                <input type="text" name="" id="namapelapor">
                 <span class="input-clear-button"></span>
               </div>
             </div>
@@ -85,15 +82,36 @@
           <li class="item-content item-input">
             <div class="item-inner">
               <!-- "item-floating-label" class on item title -->
-              <div class="item-title item-floating-label">Nomor Telepon</div>
+              <div class="item-title item-floating-label">Email</div>
               <div class="item-input-wrap">
-                <input type="text" name="telp" id="telp">
+                <input type="text" name="" id="emailpelapor">
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <!-- "item-floating-label" class on item title -->
+              <div class="item-title item-floating-label">Url berita</div>
+              <div class="item-input-wrap">
+                <input type="url" name="" id="urlpelapor">
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <!-- "item-floating-label" class on item title -->
+              <div class="item-title item-floating-label">Komentar anda tentang berita yg anda laporkan</div>
+              <div class="item-input-wrap">
+                <textarea id="komentarpelapor"></textarea>
                 <span class="input-clear-button"></span>
               </div>
             </div>
           </li>
         </ul>
-        </form>
+        <button class="col button button-fill button-round" id="kirim-laporan">Kirim Laporan</button>
+        
     </div>
     </div>
               </div>
@@ -115,6 +133,17 @@
         </li>
       </ul>
     </div>
+
+    <div class="list media-list">
+      <div class='item-title-row' style="padding-left: 16px;">Daftar Laporan Berita Hoax</div>
+  <ul id="listberitahox">
+    <div class="preloader" style="
+    margin-left: 44%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+"></div>
+  </ul>
+</div>
     <button class="col button button-fill button-round" id="cek-berita">Lakukan pengecekan</button>
       </div>
       </div>
@@ -126,6 +155,11 @@
 
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="331/js/framework7.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#listberitahox").load("http://localhost/andar/home/daftar_hoax");
+        });
+    </script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
   </body>
