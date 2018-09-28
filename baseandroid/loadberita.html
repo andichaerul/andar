@@ -10,14 +10,19 @@
         </a>
       </div>
       <div class="title" style="font-size: 15px;">
-        Laporan dikirim
+        <div class="heador"></div>
       </div>
     </div>
   </div>
     <div class="page-content">
-        <div id="send"></div>
+      <div id="dom-here">
+        <div class="preloader" style="position: absolute;
+    top: 270px;
+    left: 45%;
+    z-index: -1;"></div>
       </div>
     </div>
+  </div>
 </template>
 <!-- component styles -->
 <style>
@@ -28,25 +33,27 @@
 <!-- rest of component data and methods -->
 
 <script>
+
   // script must return component object 
- 
+  
   return {
 
     on: {
       pageInit: function () {
-        var namapelapor = encodeURIComponent(document.getElementById("namapelapor").value);   
-        var emailpelapor = document.getElementById("emailpelapor").value;
-        var urlpelapor = document.getElementById("urlpelapor").value;   
-        var komentarpelapor = document.getElementById("komentarpelapor").value;   
+        var urlhox = document.getElementById("valueloadberita").value;
         $(document).ready(function(){
-        $("#send").load("https://birautama.com/andar/home/report?nama="+namapelapor+"&email="+emailpelapor+"&url="+urlpelapor+"&comment="+komentarpelapor+"");
+        $("#dom-here").append("<iframe src='" + urlhox + "' frameBorder='0' style='width: 100%; height: 620px;'></iframe>");
+        $(".heador").append("<div>"+urlhox+"</div>");    
+        // $().load(urlhox);
         });
+          
       },
 
       pageAfterOut: function () {
         // page has left the vie
         
-  }}
+  }
+}
 
 
 

@@ -10,40 +10,14 @@
         </a>
       </div>
       <div class="title" style="font-size: 15px;">
-        Isi Biodata
+        
       </div>
     </div>
   </div>
     <div class="page-content">
-      <div class="block">
-            Tekan tombol Back jika selesai mengisi data
+      <div id="dom-here">
+        
       </div>
-      <div class="list">
-        <form class="form-store-data" id="my-form">
-        <ul>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <!-- "item-floating-label" class on item title -->
-              <div class="item-title item-floating-label">Nama Lengkap</div>
-              <div class="item-input-wrap">
-                <input type="text" name="nama" id="nama">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <!-- "item-floating-label" class on item title -->
-              <div class="item-title item-floating-label">Nomor Telepon</div>
-              <div class="item-input-wrap">
-                <input type="text" name="telp" id="telp">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-        </ul>
-        </form>
-    </div>
     </div>
   </div>
 </template>
@@ -63,7 +37,10 @@
 
     on: {
       pageInit: function () {
-        
+        var urlhox = document.getElementById("valueloadberita").value;
+        $(document).ready(function(){
+        $("#dom-here").load(urlhox);
+        });
           
       },
 

@@ -40,6 +40,10 @@ var app = new Framework7({
       path: '/sendlapor/',
       componentUrl: './sendlapor.html',
     },
+    {
+      path: '/loadberita/',
+      componentUrl: './loadberita.html',
+    },
     
     {
       path: '/seat/',
@@ -63,6 +67,7 @@ var app = new Framework7({
   },
 });
 var $$ = Dom7;
+
 var date = new Date();
 // add a day
 var sasa = date.setDate(date.getDate() + 1);
@@ -146,6 +151,7 @@ $$('#kirim-laporan').on('click', function(){
      app.popup.close('.my-popup');
   }                      
 });
+
 
 
 
